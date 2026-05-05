@@ -1,4 +1,4 @@
-# Mobile_BE_Food_App
+# Management-food-store
 
 ## 1) Tổng quan kỹ thuật
 
