@@ -1,0 +1,91 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: food
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+  jpa:
+      show-sql: true
+      open-in-view: false
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate.jdbc.time_zone: UTC
+        hibernate.id.new_generator_mappings: true
+        hibernate.cache.use_second_level_cache: false
+        hibernate.cache.use_query_cache: false
+        hibernate.generate_statistics: true
+        hibernate.jdbc.lob.non_contextual_creation: true
+        hibernate.jdbc.batch_size: 50
+        hibernate.order_inserts: true
+        hibernate.order_updates: true
+        hibernate.query.fail_on_pagination_over_collection_fetch: true
+        hibernate.query.in_clause_parameter_padding: true
+        hibernate.format_sql: true
+        hibernate:
+          jdbc:
+            time_zone: Asia/Ho_Chi_Minh
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+      url: jdbc:postgresql://localhost:5432/food
+      username: postgres
+      password: postgres #phonggda123
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        maximum-pool-size: 10
+
+  logging:
+    level:
+      root: INFO
+      org.springframework.web: DEBUG
+      org.hibernate: ERROR
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+
+  jwt:
+    secret: ${JWT_SECRET}
+    access-expiration: ${JWT_ACCESS_EXPIRATION}
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION}
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+open:
+  api:
+    title: API document
+    version: v1.0.0
+    description : Description API service
+    serverUrl : http://localhost:8888
+    serverName : server test
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key: ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}
+
